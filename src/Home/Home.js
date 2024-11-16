@@ -17,7 +17,7 @@ const Home = () => {
 
   const getTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks");
+      const response = await axios.get("https://taskmanagement-backend-b267.onrender.com/api/tasks");
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -38,7 +38,7 @@ const Home = () => {
     try {
       if (isEditMode) {
         const response = await axios.put(
-          `http://localhost:5000/api/tasks/${currentTask._id}`,
+          `https://taskmanagement-backend-b267.onrender.com/api/tasks/${currentTask._id}`,
           currentTask
         );
         setTasks(
@@ -48,7 +48,7 @@ const Home = () => {
         );
       } else {
         const response = await axios.post(
-          "http://localhost:5000/api/tasks",
+          "https://taskmanagement-backend-b267.onrender.com/api/tasks",
           currentTask
         );
         setTasks([...tasks, response.data]);
@@ -73,7 +73,7 @@ const Home = () => {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+      await axios.delete(`https://taskmanagement-backend-b267.onrender.com/api/tasks/${id}`);
       setTasks(tasks.filter((task) => task._id !== id));
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -92,7 +92,7 @@ const Home = () => {
               <button
                 className="btn btn-success"
                 onClick={() => {
-                  setCurrentTask({ title: "", description: "" }); // Reset form for new task
+                  setCurrentTask({ title: "", description: "" });
                   setIsEditMode(false);
                   setShowModal(true);
                 }}
